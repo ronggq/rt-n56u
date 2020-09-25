@@ -122,5 +122,5 @@ jobs:
       run: |
         file: /opt/images/*.trx
         curl -fsSL git.io/file-transfer | sh
-        ./transfer cow --block 2621440 -s -p 64 --no-progress ${file} 2>&1 | tee cowtransfer.log
+        ./transfer cow --block 2621440 -s -p 64 --no-progress /opt/images
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"

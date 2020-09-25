@@ -121,5 +121,5 @@ jobs:
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
-        ./transfer cow --block 2621440 -s -p 64 --no-progress /opt/images
+        ./transfer cow /opt/images
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"

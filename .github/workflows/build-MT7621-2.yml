@@ -10,13 +10,13 @@ on:
   #    - master
 #  schedule:
 #    - cron: 0 17 * * 4
-#  watch:
-   # types: [started]
+  watch:
+    types: [started]
 
 jobs:
   build:
     runs-on: ubuntu-18.04
-
+    if: github.event.repository.owner.id == github.event.sender.id  
     steps:
     - name: Checkout
       uses: actions/checkout@master
@@ -35,7 +35,7 @@ jobs:
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
-        TNAME: "JDC-1-5.0 B70 NEWIFI-D1 GHL K2P-USB-5.0 NEWIFI3 MI-R3G XY-C1"
+        TNAME: "NEWIFI3"
       run: |
         cwd=`pwd`
         CONFIG_TOOLCHAIN_DIR=${cwd//\//\\\/}\\/toolchain-mipsel

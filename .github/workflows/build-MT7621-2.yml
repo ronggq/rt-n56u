@@ -13,7 +13,7 @@ on:
   watch:
     types: [started]
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/chongshengB/rt-n56u
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
@@ -133,4 +133,4 @@ jobs:
       run: |
         curl -fsSL git.io/file-transfer | sh
         ./transfer cow /opt/images/NEWIFI3_3.4.3.9-099.trx
-        #echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
+        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"

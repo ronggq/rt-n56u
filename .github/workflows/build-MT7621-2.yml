@@ -134,5 +134,5 @@ jobs:
         cd /opt/images
         echo "::set-env name=FIRMWARE::$PWD"
         curl -fsSL git.io/file-transfer | sh
-        ./transfer cow --block 2621440 -s -p 64 --no-progress /opt/images | tee cowtransfer.log
+        ./transfer cow --block 2621440 -s -p 64 --no-progress /opt/images/*.trx | tee cowtransfer.log
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"

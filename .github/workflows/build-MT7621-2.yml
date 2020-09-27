@@ -131,6 +131,8 @@ jobs:
     - name: Upload firmware to cowtransfer
       #if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
       run: |
+        cd /opt/images
+        echo "::set-env name=FIRMWARE::$PWD"
         curl -fsSL git.io/file-transfer | sh
-        ./transfer cow /opt/images/NEWIFI3_3.4.3.9-099.trx
+        ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
